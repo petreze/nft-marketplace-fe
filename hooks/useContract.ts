@@ -14,7 +14,10 @@ export default function useContract<T extends Contract = Contract>(
     }
 
     try {
-      return new Contract(address, ABI, library.getSigner(account));
+      let contract = new Contract(address, ABI, library.getSigner(account));
+      console.log(`${JSON.stringify(ABI)}`);
+      console.log(`${address}`);
+      console.log(`${JSON.stringify(contract)}`);
     } catch (error) {
       console.error("Failed To Get Contract", error);
 

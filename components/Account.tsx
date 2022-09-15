@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { injected, walletConnect } from "../connectors";
 import useENSName from "../hooks/useENSName";
 import useMetaMaskOnboarding from "../hooks/useMetaMaskOnboarding";
-import { formatEtherscanLink, shortenHex } from "../util";
 
 type AccountProps = {
   triedToEagerConnect: boolean;
@@ -87,14 +86,8 @@ const Account = ({ triedToEagerConnect }: AccountProps) => {
 
   return (
     <>
-        <a
-      {...{
-        href: formatEtherscanLink("Account", [chainId, account]),
-        target: "_blank",
-        rel: "noopener noreferrer",
-      }}
-    >
-      {ENSName || `${shortenHex(account, 4)}`}
+    <a>
+      {ENSName || `${account}`}
     </a>
     <button
           onClick={async () => {

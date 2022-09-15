@@ -3,10 +3,12 @@ import Head from "next/head";
 import Link from "next/link";
 import Account from "../components/Account";
 import NativeCurrencyBalance from "../components/NativeCurrencyBalance";
-import TokenBalance from "../components/TokenBalance";
-import USLibrary from "../components/USLibrary";
-import { ALBT_TOKEN_ADDRESS, US_ELECTION_ADDRESS } from "../constants";
+import MarketPlace from "../components/MarketPlace";
+import MarketItem from "../components/MarketItem";
+import { MARKET_PLACE_ADDRESS } from "../constants";
 import useEagerConnect from "../hooks/useEagerConnect";
+import fs from "fs";
+
 
 function Home() {
   const { account, library } = useWeb3React();
@@ -18,34 +20,25 @@ function Home() {
   return (
     <div>
       <Head>
-        <title>LimeAcademy-boilerplate</title>
+        <title>NFT</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <header>
         <nav>
-          <Link href="/">
-            <a>LimeAcademy-boilerplate</a>
-          </Link>
-
+          <h2>
+            <Link href="/">
+              <a>NFT Marketplace</a>
+            </Link>
+          </h2>
           <Account triedToEagerConnect={triedToEagerConnect} />
         </nav>
       </header>
 
       <main>
-        <h1>
-          Welcome to{" "}
-          <a href="https://github.com/LimeChain/next-web3-boilerplate">
-            LimeAcademy-boilerplate
-          </a>
-        </h1>
-
-        {isConnected && (
+        {true && (
           <section>
-            <NativeCurrencyBalance />
-
-            <TokenBalance tokenAddress={ALBT_TOKEN_ADDRESS} symbol="ALBT" />
-            <USLibrary contractAddress={US_ELECTION_ADDRESS} />
+            <MarketPlace contractAddress={MARKET_PLACE_ADDRESS} />
           </section>
         )}
       </main>

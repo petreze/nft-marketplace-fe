@@ -4,12 +4,10 @@ import { useEffect, useState } from "react";
 import { injected, walletConnect } from "../connectors";
 import useENSName from "../hooks/useENSName";
 import useMetaMaskOnboarding from "../hooks/useMetaMaskOnboarding";
+import { shortenHex } from "../util";
 
-type AccountProps = {
-  triedToEagerConnect: boolean;
-};
 
-const Account = ({ triedToEagerConnect }: AccountProps) => {
+const Account = () => {
   const { active, error, activate, deactivate, chainId, account, setError } =
     useWeb3React();
 
@@ -32,10 +30,6 @@ const Account = ({ triedToEagerConnect }: AccountProps) => {
   const ENSName = useENSName(account);
 
   if (error) {
-    return null;
-  }
-
-  if (!triedToEagerConnect) {
     return null;
   }
 
@@ -87,7 +81,7 @@ const Account = ({ triedToEagerConnect }: AccountProps) => {
   return (
     <>
     <a>
-      {ENSName || `${account}`}
+      {ENSName || `${shortenHex(account, 4)}`}
     </a>
     <button
           onClick={async () => {

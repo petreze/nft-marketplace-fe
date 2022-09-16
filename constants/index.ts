@@ -9,7 +9,8 @@
   };
 
   // Network chain ids
-  export const supportedMetamaskNetworks = [1, 3, 4, 5, 42, 31337];
+  //export const supportedMetamaskNetworks = [1, 3, 4, 5, 42, 31337];
+  export const supportedMetamaskNetworks = [31337];
 
-  export const MARKET_PLACE_ADDRESS = "0x0165878A594ca255338adfa4d48449f69242Eb8F";
-  export const MARKET_ITEM_ADDRESS = "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853";
+  export const MARKET_PLACE_ADDRESS = "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9";
+  export const MARKET_ITEM_ADDRESS = "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707";

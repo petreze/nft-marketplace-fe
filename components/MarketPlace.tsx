@@ -1,20 +1,14 @@
 import type { Web3Provider } from "@ethersproject/providers";
 import { useWeb3React } from "@web3-react/core";
-import { useEffect, useState, Component } from "react";
+import { useEffect, useState } from "react";
 import useMarketPlaceContract from "../hooks/useMarketPlaceContract";
 
 type MarketPlace = {
   contractAddress: string;
 };
 
-export enum Leader {
-  UNKNOWN,
-  BIDEN,
-  TRUMP
-}
-
 const MarketPlace = ({ contractAddress }: MarketPlace) => {
-  const { account, library } = useWeb3React<Web3Provider>();
+  //const { account, library } = useWeb3React<Web3Provider>();
   const marketPlaceContract = useMarketPlaceContract(contractAddress);
 
 
@@ -34,11 +28,31 @@ const MarketPlace = ({ contractAddress }: MarketPlace) => {
 
 
   return (
+    <div className='container'>
+        <div className='content'>
+            {items.map((item, i) =>
+                <div key={i}>
+                    <p className='id'>
+                      {item.id}
+                    </p>
+                    <p className='seller'>
+                      {item.seller}
+                    </p>
+                    <p className='price'>
+                      {item.price}
+                    </p>
+                </div>
+            )}
+        </div>
+    </div>
+);
+  
+  /* return (
     <div className="results-form">
     <p>
       Items:
     </p>
-    <table className="nfts">
+    <table className="marketplace">
       <thead>
         <tr>
             <th scope="col">Id</th>
@@ -46,19 +60,8 @@ const MarketPlace = ({ contractAddress }: MarketPlace) => {
             <th scope="col">Price</th>
         </tr>
       </thead>
-      <tbody data="items">
-        <tr>
-            <th scope="row">Donuts</th>
-            <td>3,000</td>
-        </tr>
-        <tr>
-            <th scope="row">Stationery</th>
-            <td>18,000</td>
-        </tr>
-        <tr>
-            <th scope="row">Stationery</th>
-            <td>18,000</td>
-        </tr>
+      <tbody>
+        
       </tbody>
     </table>
     
@@ -73,7 +76,7 @@ const MarketPlace = ({ contractAddress }: MarketPlace) => {
         }
       `}</style>
     </div>
-  );
+  ); */
  
 };
 
